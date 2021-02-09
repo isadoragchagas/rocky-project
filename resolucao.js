@@ -15,6 +15,13 @@ function exportDataBase(dataBase) {
     })
 }
 
+function fixId (id){
+    if (Number(id) < 0 && Number(id) > Infinity) {
+        console.log('error')
+    }
+    return fixId
+}
+
 function fixName (name){
     const newName = name.replace(/\æ/g, 'a')
     .replace(/\¢/g, 'c')
@@ -25,6 +32,10 @@ function fixName (name){
 
 function fixPrice (price){
     const newPrice = Number(price)
+
+    if (isNaN(newPrice)) {
+        return 0
+    }
     return newPrice
 }
 
@@ -34,6 +45,14 @@ function fixQuantity (quantity){
     }
     const newQuantity = 0
     return newQuantity
+}
+
+function fixCategory (category){
+    if (category != null && category != undefined && category.length > 0){
+        return category
+    }
+    const newCategory = "default"
+    return newCategory
 }
 
 function sortDataBase (dataBase) {
@@ -90,9 +109,11 @@ function main(){
     for(let i = 0; i < dataBase.length; i++) {
         const product = dataBase[i]
 
+        product.id = fixId(product.id)
         product.name = fixName(product.name)
         product.price = fixPrice(product.price)
         product.quantity = fixQuantity(product.quantity)
+        product.category = fixCategory(product.category)
     }
     exportDataBase(dataBase)
     
