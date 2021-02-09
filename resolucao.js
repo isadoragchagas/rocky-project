@@ -19,7 +19,7 @@ function fixId (id){
     if (Number(id) < 0 && Number(id) > Infinity) {
         console.log('error')
     }
-    return fixId
+    return id
 }
 
 function fixName (name){
