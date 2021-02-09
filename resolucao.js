@@ -16,7 +16,10 @@ function exportDataBase(dataBase) {
 }
 
 function fixName (name){
-    const newName = name.replace(/\æ/g, 'a').replace(/\¢/g, 'c').replace(/\ø/g, 'o').replace(/\ß/g, 'b')
+    const newName = name.replace(/\æ/g, 'a')
+    .replace(/\¢/g, 'c')
+    .replace(/\ø/g, 'o')
+    .replace(/\ß/g, 'b')
     return newName
 }
 
@@ -65,9 +68,20 @@ function getNames(product) {
 }
 
 function calculateAmount(dataBase) {
+    const categoryAmount = {}
+
     for (let i = 0; i < dataBase.length; i++) {
         const product = dataBase[i]
+
+        const amount = product.quantity * product.price
+        
+        if (categoryAmount[product.price]) {
+            calculateAmount[product.price] += amount
+        } else {
+            categoryAmount[product.category] = amount
+        }
     }
+    console.log(categoryAmount)
 }
 
 function main(){
@@ -83,6 +97,7 @@ function main(){
     exportDataBase(dataBase)
     
     sortDataBase(dataBase)
+    calculateAmount(dataBase)
 }
 
 main()
