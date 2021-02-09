@@ -23,7 +23,7 @@ E depois criar as seguintes funções para validação do banco de dados corrigi
 3. Executar o comando: 
 ``node resolucao.js``
 
-__OBS:__ Para rodar o projeto você vai precisar do node, caso ainda não tenha estalado pode fazer isso [aqui](https://nodejs.org/en/download/).
+__OBS:__ Para rodar o projeto você vai precisar do node, caso ainda não tenha instalado pode fazer isso [aqui](https://nodejs.org/en/download/).
 
 ## Rodando a aplicação
 
